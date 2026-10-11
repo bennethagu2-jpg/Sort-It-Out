@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sort It Out: a school recycling guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#top">Sort It Out</a>
+  <nav><a href="#play">Try it</a><a href="#facts">Facts</a><a href="#act">Take action</a></nav>
+</div></header>
+
+<main id="top">
+  <div class="wrap hero">
+    <h1>Put it in the right bin.</h1>
+    <p>Most waste at school ends up in the wrong bin. A few seconds of sorting keeps paper, plastic and glass out of the landfill.</p>
+    <a class="btn" href="#play">Test your sorting</a>
+  </div>
+
+  <section id="play"><div class="wrap">
+    <h2>Which bin does it go in?</h2>
+    <div class="sorter">
+      <div>What is this?</div>
+      <div class="item" id="item">Loading…</div>
+      <div class="bins">
+        <button class="bin paper" data-bin="paper">Paper</button>
+        <button class="bin plastic" data-bin="plastic">Plastic &amp; metal</button>
+        <button class="bin glass" data-bin="glass">Glass</button>
+        <button class="bin trash" data-bin="trash">General waste</button>
+      </div>
+      <div id="msg" role="status" aria-live="polite">Pick a bin.</div>
+      <div class="score" id="score">Score: 0 / 0</div>
+    </div>
+  </div></section>
+
+  <section id="facts"><div class="wrap">
+    <h2>Why it matters</h2>
+    <div class="facts">
+      <div class="fact"><h3>Paper can be reused</h3><p>Paper can be recycled several times, which saves trees and water.</p></div>
+      <div class="fact"><h3>Plastic lasts</h3><p>Plastic bottles take hundreds of years to break down if they are thrown away.</p></div>
+      <div class="fact"><h3>Glass never wears out</h3><p>Glass can be melted and made into new jars again and again.</p></div>
+    </div>
+  </div></section>
+
+  <section id="act"><div class="wrap">
+    <h2>What we can do at school</h2>
+    <ul class="steps">
+      <li>Rinse bottles and cans before recycling them.</li>
+      <li>Use both sides of the paper before it goes in the bin.</li>
+      <li>Bring a reusable water bottle.</li>
+      <li>Put up labelled bins in every classroom.</li>
+    </ul>
+  </div></section>
+</main>
+
+<footer><div class="wrap">School project by [Agu Benneth], [Software Engineering], [300 Level].</div></footer>
+
+<script src="script.js"></script>
+</body>
+</html>

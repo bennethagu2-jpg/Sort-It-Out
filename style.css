@@ -1,0 +1,295 @@
+/* =========================================
+   1. COLORS, FONTS AND THEME
+   ========================================= */
+:root {
+  /* Colors */
+  --bg: #f1f7f4;
+  --ink: #10263a;
+  --muted: #4b6072;
+  --card: #ffffff;
+  --line: #cfe0d8;
+  --blue: #1f6feb;
+  --green: #16955a;
+  --yellow: #f2b705;
+  --grey: #5d6b78;
+
+  /* Fonts */
+  --head: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Keeps content clear of phone notches */
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dark mode (follows the device setting) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1a24;
+    --ink: #eaf3ef;
+    --muted: #9fb3c2;
+    --card: #142636;
+    --line: #244157;
+  }
+}
+
+/* Dark mode (forced, if you add a toggle later) */
+:root[data-theme="dark"] {
+  --bg: #0d1a24;
+  --ink: #eaf3ef;
+  --muted: #9fb3c2;
+  --card: #142636;
+  --line: #244157;
+}
+
+
+/* =========================================
+   2. BASE STYLES
+   ========================================= */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 64px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 1.1rem/1.6 var(--body);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--head);
+  line-height: 1.1;
+  margin: 0 0 0.6em;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 800;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+section {
+  padding: 40px 0;
+}
+
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+/* =========================================
+   3. HEADER AND NAVIGATION
+   ========================================= */
+header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  z-index: 5;
+}
+
+header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-height: 56px;
+}
+
+.logo {
+  font: 800 1.2rem var(--head);
+  text-decoration: none;
+}
+
+nav a {
+  margin-left: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   4. HERO (top section)
+   ========================================= */
+.hero {
+  padding: 56px 0 40px;
+}
+
+.hero h1 {
+  max-width: 11ch;
+  font-size: clamp(2.6rem, 9vw, 5.5rem);
+  font-weight: 800;
+}
+
+.hero p {
+  max-width: 55ch;
+  color: var(--muted);
+  font-size: 1.25rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 12px 22px;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+/* =========================================
+   5. BIN SORTING GAME
+   ========================================= */
+.sorter {
+  padding: 24px;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.item {
+  margin: 8px 0 16px;
+  font: 800 clamp(1.8rem, 6vw, 2.8rem) var(--head);
+}
+
+.bins {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.bin {
+  min-height: 56px;
+  padding: 16px 8px;
+  border: 0;
+  border-radius: 14px;
+  color: #fff;
+  font: 600 1rem var(--body);
+  cursor: pointer;
+}
+
+.bin:active {
+  transform: scale(0.97);
+}
+
+/* Bin colors */
+.bin.paper   { background: var(--blue); }
+.bin.plastic { background: var(--yellow); color: #10263a; }
+.bin.glass   { background: var(--green); }
+.bin.trash   { background: var(--grey); }
+
+#msg {
+  min-height: 3.2em;
+  margin: 16px 0 4px;
+  font-weight: 600;
+}
+
+.score {
+  color: var(--muted);
+}
+
+
+/* =========================================
+   6. FACTS
+   ========================================= */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.fact {
+  padding: 4px 0 4px 16px;
+  border-left: 6px solid var(--green);
+}
+
+.fact:nth-child(2) { border-color: var(--blue); }
+.fact:nth-child(3) { border-color: var(--yellow); }
+
+.fact h3 {
+  margin-bottom: 0.3em;
+  font-size: 1.3rem;
+}
+
+.fact p {
+  margin: 0;
+  color: var(--muted);
+}
+
+
+/* =========================================
+   7. TAKE ACTION LIST
+   ========================================= */
+ul.steps {
+  max-width: 60ch;
+  padding-left: 1.2em;
+}
+
+ul.steps li {
+  margin-bottom: 0.6em;
+}
+
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
+footer {
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+
+/* =========================================
+   9. RESPONSIVE (phones) AND ACCESSIBILITY
+   ========================================= */
+@media (max-width: 560px) {
+  nav a {
+    margin: 0 12px 0 0;
+  }
+
+  .hero {
+    padding-top: 36px;
+  }
+}
+
+/* Turns off animations for people who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .bin:active {
+    transform: none;
+  }
+}
